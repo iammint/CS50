@@ -18,7 +18,7 @@ So we would describe them both as O(n) running time. And the green line takes O(
 
 
 # Linear search, binary search
-The lower bound of O(n) is Ω(1).
+The lower bound is Ω(1).
 
 If we have a list of sorted elements, then we can start in the middle and find our value more efficiently since we know we can go left or right, dividing the problem in half each time.
 
@@ -196,7 +196,7 @@ void draw(int n)
 }
 ```
 
-- If n is 0(or negative somehow) we'll stop without printing anything. And we need to make sure we stop for some **base case**, so our function doesn't go on forever.
+- If n is 0(or negative somehow) we'll stop without printing anything. And we need to make sure we stop for some **base case**, so our function doesn't go on forever. So there are base case and recursive case.
 
 - Otherwise, we'll call `draw` agian, to print a pyramid of height n-1.
 
@@ -213,6 +213,71 @@ Segmentation fault (core dumped)
 ```
 
 A segmentation fault means that we’ve touched memory in our computer that we shouldn’t have, and this happened since our function has called itself over and over so many times and ended up using too much memory.
+
+### Recursion and non-recursion
+
+In general, **but not always**, recursive functions replace loops in non-recursive functions.
+
+```C
+// Recursive function
+int fact(int n)
+{
+    if (n === 1)
+        return 1;
+    else 
+        return n * fact(n - 1);
+}
+```
+
+```C
+// Non-recursive function
+int fact(int n)
+{
+    int product = 1;
+    while(n > 0)
+    {
+        product *= n;
+        n--;
+    }
+    return product;
+}
+```
+
+- Multiple base cases:
+  - eg: The Fibonacci number sequence 
+- Multiple recursive cases:
+  - The Collatz conjecture
+
+
+### Practice
+
+Write a recursive function `collatz(n)` that calculates how many steps it takes to get to 1 if you start from n and recurse as indicated above.
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+// Write a recursive function `collatz(n)` that calculates how many steps it takes to get to 1
+// if you start from n and recurse as indicated above.
+// if n is odd, 3*n + 1; if n is even, n / 2
+int collatz(int n);
+
+int main(void)
+{
+    int arg = get_int("n: ");
+    printf("%i\n", collatz(arg));
+}
+int collatz(int n)
+{
+    if (n == 1)
+        return 0;
+
+    else if ((n % 2) == 0)
+        return 1 + collatz(n / 2);
+    else
+        n = 1 + collatz(3 * n + 1);
+}
+```
 
 ## 4. Merge sort
 > $O(n log n)$   $Ω(n log n)$   $Θ(n log n)$
@@ -254,3 +319,15 @@ Every time we merged two halves, we only needed to look at each each number once
 The lower bound of our merge sort is still $Ω(n log n)$, since we have to do all the work even if the list is sorted. So merge sort also has $Ω(n log n)$.
 
 [See Visualization!](https://www.youtube.com/watch?v=ZZuD6iUe3Pc)
+
+# Time complexity of three sorting
+|Sort Method|Selection Sort|Bubble Sort|Merge Sort|
+|:-:|:-:|:-:|:-:|
+|Worst case|$O((n^2+n)/2)$|$O(n^2-2n+1)$|$O(nlogn)$|
+|Best case|$Ω((n^2+n)/2)$|$Ω(n)$|$θ(nlogn)$|
+
+
+|Situation|Time Complexity|
+|:-:|:-:|
+|Worst case|Merge Sort < Selection sort < Bubble sort|
+|Best case|Bubble sort < Merge Sort < Selection sort|
