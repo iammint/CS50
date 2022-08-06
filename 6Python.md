@@ -435,6 +435,98 @@ if name in people:
     print(f"Number: {number}")
 ```
 
+# Files
+
+Let’s open a CSV file, with comma-separated values:
+
+```py
+import csv
+from cs50 import get_string
+
+file = open("phonebook.csv", "a")
+
+name = get_string("Name: ")
+number = get_string("Number: ")
+
+writer = csv.writer(file)
+writer.writerow([name, number])
+
+file.close()
+```
+
+```
+$ python phonebook.py
+Name: Carter
+Number: +1-617-495-1000
+$ ls
+phonebook.csv  phonebook.py
+```
+
+It turns out that Python also has a `csv` library that helps us work with CSV files, so after we open the file for appending, we can call csv.writer to create a `writer` object from the file. Then, we can use a method inside it, `writer.writerow`, to write a list as a row.
+
+Our `phonebook.csv` file will have our data. We can run our program again, and see new data being added to our file.
+
+We can use the `with` keyword, which will close the file for us after we’re finished:
+
+```py
+...
+with open("phonebook.csv", "a") as file:
+    writer = csv.writer(file)
+    writer.writerow((name, number))
+```
+
+We’ll download the data as a CSV file, which looks like this:
+
+```
+  Timestamp,House
+  10/13/2021 16:00:07,Ravenclaw
+  10/13/2021 16:00:07,Gryffindor
+  10/13/2021 16:00:09,Ravenclaw
+  10/13/2021 16:00:10,Gryffindor
+  10/13/2021 16:00:10,Gryffindor
+```
+
+Now we can tally the number of times a house appears:
+
+```py
+import csv
+
+houses = {
+    "Gryffindor": 0,
+    "Hufflepuff": 0,
+    "Ravenclaw": 0,
+    "Slytherin": 0
+}
+
+with open("hogwarts.csv", "r") as file:
+    reader = csv.reader(file)
+    next(reader)
+    for row in reader:
+        house = row[1]
+        houses[house] += 1
+
+for house in houses:
+    count = houses[house]
+    print(f"{house}: {count}")
+```
+
+- We use the `reader` function from the `csv` library, skip the header row with `next(reader)`, and then iterate over each of the rest of the rows.
+- The second item in each row, `row[1]`, is the string of a house, so we can use that to access the value stored in houses for that key, and add one to it with `houses[house] += 1`.
+
+We can improve our program by reading each row as a dictionary, using the first row in the file as the keys for each value:
+
+```py
+...
+with open("hogwarts.csv", "r") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        house = row["House"]
+        houses[house] += 1
+...
+```
+
+Now, we can say `house = row["House"]` to get the value in that column.
+
 # More libraries
 
 On our own Mac or PC, we can use another library to convert text to speech:
