@@ -1,0 +1,145 @@
+/* id选择器和父/兄 */
+@font-face {
+  font-family: "iconfont"; /* Project id 3280911 */
+  src: url("//at.alicdn.com/t/c/font_3280911_9vpdbj6vhvw.woff2?t=1660132678778")
+      format("woff2"),
+    url("//at.alicdn.com/t/c/font_3280911_9vpdbj6vhvw.woff?t=1660132678778")
+      format("woff"),
+    url("//at.alicdn.com/t/c/font_3280911_9vpdbj6vhvw.ttf?t=1660132678778")
+      format("truetype");
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 22px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+  color: #9499ff;
+}
+* {
+  box-sizing: border-box;
+  font-family: Comic Sans MS;
+  font-size: 18px;
+}
+/* 设置中文字体 */
+.cn {
+  font-family: 黑体;
+}
+/* 大点的文字 */
+.bigger {
+  font-size: 20px;
+}
+/* 设置紫色 */
+.purple {
+  color: #9499ff;
+}
+/* 介绍文字的内容需要padding */
+.padding {
+  padding-top: 2vh;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+.margin {
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+/* 小板块的上下边距 */
+.margin-top {
+  margin-top: 5vh;
+}
+/* 板块里的文字与线之间 */
+.content {
+  margin-top: 2vh;
+}
+/* 地址GPA向右浮动 */
+.float-right {
+  float: right;
+}
+/* 去掉list的所有样式 */
+ul {
+  list-style: none;
+}
+/* 设置a的样式 */
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: #9499ff;
+}
+/* Set the photo to proper size */
+.img-thumbnail {
+  height: 90%;
+  width: 90%;
+  border-radius: 50%;
+}
+/* Set the padding of body */
+body {
+  padding-left: 3vw;
+  padding-right: 3vw;
+  padding-top: 3vh;
+}
+/* Set the margin of left */
+.left {
+  width: 22vw;
+  float: left;
+}
+/* Set the list */
+.info {
+  list-style: none;
+  margin-top: 3vh;
+  /* 让left的左右列表都向左对齐 */
+  margin-left: -2.5vw;
+}
+
+/* Set the skil */
+h4 {
+  color: #9499ff;
+  margin-top: 3vh;
+}
+.line {
+  width: 100%;
+  height: 1.5px;
+  background-color: #9499ff;
+}
+/* 设置四个小点 */
+.vertical {
+  float: left;
+  width: 1%;
+  height: 8px;
+  background-color: #9499ff;
+  margin-top: 5px;
+}
+.r {
+  margin-left: 32%;
+}
+/* 设置进度条 */
+.progress-bar {
+  background-color: #9499ff;
+}
+/* 设置文字介绍页面 */
+.right {
+  float: right;
+  width: 70vw;
+}
+/* header */
+.white {
+  color: white;
+}
+/* 设置白色的线 */
+.white-line {
+  float: left;
+  background-color: #fff;
+  width: 20vw;
+}
+.introduce {
+  background-color: #9499ff;
+  height: 33vh;
+  border-radius: 1vw;
+}
+/* summary语句与直线一条线，分段 */
+.summary {
+  float: left;
+  margin-top: 2vh;
+}
